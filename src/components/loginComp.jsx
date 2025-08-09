@@ -1,15 +1,15 @@
-import toast, { Toaster } from "react-hot-toast";
-import React, { useState, useEffect } from "react";
-import { Eye, EyeSlash } from "iconsax-react";
-import { Link } from "react-router-dom";
+import toast, { Toaster } from 'react-hot-toast';
+import React, { useState, useEffect } from 'react';
+import { Eye, EyeSlash } from 'iconsax-react';
+import { Link } from 'react-router-dom';
 
 export const LoginComp = () => {
   const [apiData, setApiData] = useState([]);
 
   const [formData, setFormData] = useState({
-    nama: "",
-    email: "",
-    password: "",
+    nama: '',
+    email: '',
+    password: '',
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -36,13 +36,13 @@ export const LoginComp = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = "https://v1.appbackend.io/v1/rows/l0h0FS0hj4ln";
+        const url = 'https://v1.appbackend.io/v1/rows/l0h0FS0hj4ln';
         const response = await fetch(url);
         const result = await response.json();
-        console.log("Data dari API:", result);
+        console.log('Data dari API:', result);
         setApiData(result.data);
       } catch (error) {
-        console.log("Error:", error);
+        console.log('Error:', error);
       }
     };
 
@@ -59,15 +59,15 @@ export const LoginComp = () => {
     );
 
     if (user) {
-      console.log("Login successful");
-      toast.success("login berhasil");
+      console.log('Login successful');
+      toast.success('login berhasil');
 
       setTimeout(() => {
-        window.location.href = "/home";
+        window.location.href = '/home';
       }, 1000);
     } else {
-      toast.error("cek kembali email atau password anda!");
-      console.log("Email atau password salah");
+      toast.error('cek kembali email atau password anda!');
+      console.log('Email atau password salah');
     }
   };
 
@@ -89,7 +89,7 @@ export const LoginComp = () => {
                 value={formData.email}
                 onChange={handleChange}
                 className={`w-full border ${
-                  formErrors.email ? "border-red-500" : "border-gray-300"
+                  formErrors.email ? 'border-red-500' : 'border-gray-300'
                 } rounded-md py-2 px-3 text-gray-800 focus:outline-none focus:border-blue-500`}
               />
               {formErrors.email && (
@@ -102,13 +102,13 @@ export const LoginComp = () => {
                 Password:
               </label>
               <input
-                type={passwordVisible ? "text" : "password"} // Use text type if passwordVisible is true
+                type={passwordVisible ? 'text' : 'password'} // Use text type if passwordVisible is true
                 name="password"
                 id="password"
                 value={formData.password}
                 onChange={handleChange}
                 className={`w-full border ${
-                  formErrors.password ? "border-red-500" : "border-gray-300"
+                  formErrors.password ? 'border-red-500' : 'border-gray-300'
                 } rounded-md py-2 px-3 text-gray-800 focus:outline-none focus:border-blue-500 pr-10`} // Add padding right for the icon
               />
 
@@ -131,7 +131,7 @@ export const LoginComp = () => {
             </button>
           </form>
           <p>
-            <span>Belum punya akun?</span>{" "}
+            <span>Belum punya akun?</span>{' '}
             <Link className="text-blue-700" to="/register">
               register
             </Link>
